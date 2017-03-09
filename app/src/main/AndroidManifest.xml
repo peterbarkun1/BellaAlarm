@@ -6,6 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_pw"
         android:label="Bella alarm"
+        android:screenOrientation="locked"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -20,7 +21,7 @@
         <activity android:name=".alarm_Activity" />
         <activity
             android:name=".ScrollingActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
