@@ -9,13 +9,6 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
-    <TimePicker
-        android:id="@+id/timePicker3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/bellaColor1"
-        android:numbersTextColor="@color/bellaColor1"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
@@ -35,5 +28,16 @@
         android:layout_marginRight="16dp"
        android:contextClickable="true"
         android:onClick="onClickAlarm"/>
+
+    <TimePicker
+        android:id="@+id/timePicker3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/bellaColor1"
+        android:numbersSelectorColor="@color/bellaColor1"
+        android:numbersTextColor="@color/bellaColor1"
+        android:soundEffectsEnabled="true"
+        android:splitMotionEvents="true"
+        android:timePickerMode="spinner" />
 
 </android.support.design.widget.CoordinatorLayout>

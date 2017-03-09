@@ -14,7 +14,7 @@
     tools:context="petersworkshop.graphbella.MainActivity">
 
     <TextView
-        android:text="This graph shows youre morning mood throughout the week"
+        android:text="This graph shows your morning mood throughout the week"
         android:layout_marginLeft="25dp"
         android:textSize="20dp"
         android:layout_marginTop="15dp"
@@ -30,7 +30,7 @@
         android:text="Share your result with frends"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@drawable/buuttonshare"
         android:textColor="@color/bellaColor1"
         android:id="@+id/button"
         android:clickable="true"
