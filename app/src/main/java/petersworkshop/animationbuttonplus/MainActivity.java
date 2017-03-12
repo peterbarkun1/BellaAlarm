@@ -21,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //нахождение элементов на xml файле
+        //переход на скролл_активити
 
         findViewById(R.id.bellaAlarmText).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent, optionCompat.toBundle());
             }
         });
-
 
 
         //для анимации меню
@@ -76,14 +74,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
         //обработчики кнопок меню
+
+        //переход к графику
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this,Main2Activity.class);
             startActivity(intent);
         }
+
+        //переход к информации
         public void onClick1(View view) {
             Intent intent = new Intent(MainActivity.this,AboutActivity.class);
             startActivity(intent);
         }
+
+        //переход к будильнику
         public void onClick4(View view) {
         Intent intent = new Intent(MainActivity.this,alarm_Activity.class);
         startActivity(intent);
