@@ -1,8 +1,8 @@
 package petersworkshop.animationbuttonplus;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -50,6 +50,6 @@ public class Main2Activity extends AppCompatActivity {
         series.setDrawBackground(true);
         series.setDataPointsRadius(10);
         series.setThickness(8);
-
     }
+
 }
