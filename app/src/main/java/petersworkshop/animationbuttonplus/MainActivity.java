@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         //переход к будильнику
         public void onClick4(View view) {
-        Intent intent = new Intent(MainActivity.this,alarm_Activity.class);
+        Intent intent = new Intent(MainActivity.this,AlarmActivity.class);
         startActivity(intent);
 
     }
