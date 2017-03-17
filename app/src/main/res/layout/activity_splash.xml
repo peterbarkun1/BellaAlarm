@@ -27,5 +27,5 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:srcCompat="@drawable/ic_add_alarm_black_24dp" />
+        app:srcCompat="@drawable/ic_notifications_black_24dp" />
 </RelativeLayout>

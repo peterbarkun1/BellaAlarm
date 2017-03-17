@@ -29,13 +29,13 @@ public class AlarmService extends IntentService {
                 new Intent(this, AlarmActivity.class), 0);
 
         NotificationCompat.Builder alamNotificationBuilder = new NotificationCompat.Builder(
-                this).setContentTitle("Alarm").setSmallIcon(R.mipmap.ic_pw)
+                this).setContentTitle("Bella Alarm").setSmallIcon(R.mipmap.ic_pw)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg);
-
 
         alamNotificationBuilder.setContentIntent(contentIntent);
         alarmNotificationManager.notify(1, alamNotificationBuilder.build());
         Log.d("AlarmService", "Notification sent.");
+
     }
 }

@@ -8,10 +8,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_pw"
         android:label="Bella alarm"
-        android:screenOrientation="locked"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,17 +19,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".Main2Activity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".AboutActivity" />
+        <activity android:name=".AboutActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".AlarmActivity" />
+        <activity android:name=".AlarmActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ScrollingActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
