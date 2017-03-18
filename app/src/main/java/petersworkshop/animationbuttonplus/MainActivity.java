@@ -1,5 +1,6 @@
 package petersworkshop.animationbuttonplus;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -77,20 +78,27 @@ public class MainActivity extends AppCompatActivity {
 
         //переход к графику
         public void onClick(View view) {
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
             Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-            startActivity(intent);
+            intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+            startActivity(intent, options.toBundle());
         }
 
         //переход к информации
         public void onClick1(View view) {
+
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
             Intent intent = new Intent(MainActivity.this,AboutActivity.class);
-            startActivity(intent);
+            intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+            startActivity(intent, options.toBundle());
         }
 
         //переход к будильнику
         public void onClick4(View view) {
-        Intent intent = new Intent(MainActivity.this,AlarmActivity.class);
-        startActivity(intent);
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
+            Intent intent = new Intent(MainActivity.this,AlarmActivity.class);
+            intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+            startActivity(intent, options.toBundle());
 
     }
 }

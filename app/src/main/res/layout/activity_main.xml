@@ -89,7 +89,7 @@ Alarm"/>
         android:onClick="onClick4"/>
 
     <TextView
-        android:text="Build 3.5"
+        android:text="Build 0.3.6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/bellaColor1"

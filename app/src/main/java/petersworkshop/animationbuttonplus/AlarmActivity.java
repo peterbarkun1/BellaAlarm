@@ -34,8 +34,12 @@ public class AlarmActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
+
+
         alarmTimePicker = (TimePicker) findViewById(R.id.alarmTimePicker);
         alarmTextView = (TextView) findViewById(R.id.alarmText);
         ToggleButton alarmToggle = (ToggleButton) findViewById(R.id.alarmToggle);
@@ -44,7 +48,7 @@ public class AlarmActivity extends Activity {
 
     public void onToggleClicked(View view) {
 
-        Toast.makeText(AlarmActivity.this, "Complete!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AlarmActivity.this, "Alarm set!", Toast.LENGTH_SHORT).show();
 
         if (((ToggleButton) view).isChecked()) {
             Log.d("MyActivity", "Alarm On");
@@ -54,6 +58,9 @@ public class AlarmActivity extends Activity {
             Intent myIntent = new Intent(AlarmActivity.this, AlarmReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, myIntent, 0);
             alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+            //попытка сделать повтор по дням
+            //long dayOfWeek = calendar.getFirstDayOfWeek();
+            //alarmManager.setInexactRepeating(alarmManager.RTC_WAKEUP,dayOfWeek,AlarmManager.INTERVAL_DAY,pendingIntent);
         } else {
             alarmManager.cancel(pendingIntent);
             setAlarmText("");
