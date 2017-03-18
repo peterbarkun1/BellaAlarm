@@ -3,7 +3,7 @@
 
     <explode
         android:duration="1000"
-        android:interpolator="@android:interpolator/cycle">
+        android:interpolator="@android:interpolator/decelerate_cubic">
     </explode>
 
 </transitionSet>
