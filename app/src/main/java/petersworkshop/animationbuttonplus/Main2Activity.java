@@ -31,10 +31,11 @@ public class Main2Activity extends AppCompatActivity {
 
         initPage();
         initAnimation();
+//__________________________________________________________________________________________________
+        //объявления переменных для графика и расчеты
 
-        //объявления переменных для графика
         double x,y,x1,y1,pi;
-        Date ts;//дата сегодня, рождения, разница;
+        Date ts;//дата сегодня
 
         pi=3.14;
 
@@ -44,7 +45,7 @@ public class Main2Activity extends AppCompatActivity {
         Calendar tr = new GregorianCalendar(2013, 8, 13);//левая дата рождения
 
 
-
+//__________________________________________________________________________________________________
         //отрисовка графиков
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
@@ -81,7 +82,7 @@ public class Main2Activity extends AppCompatActivity {
             series.setDataPointsRadius(10);
             series.setThickness(8);
     }
-
+//__________________________________________________________________________________________________
     //анимация
     private void initPage() {
         type = (Constants.TransitionType) getIntent().getSerializableExtra(Constants.KEY_ANIM_TYPE);
