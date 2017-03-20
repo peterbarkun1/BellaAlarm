@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -70,10 +69,11 @@ public class Main2Activity extends AppCompatActivity {
         //во время открытия, выводит разницу миллисекунд сегодняшнего дня от 7 августа 98
 
         double perev = raz/86400000;
-        Toast.makeText(this,(String.valueOf(perev)), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,(String.valueOf(perev)), Toast.LENGTH_LONG).show();
         //переводит разницу из миллисекунд в дни
 
         double[] razdney = new double[7];
+        //создаем массив для отрисовки графика
 
 //__________________________________________________________________________________________________
 
