@@ -1,12 +1,14 @@
 package petersworkshop.animationbuttonplus;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -14,13 +16,15 @@ import android.widget.ToggleButton;
 
 import java.util.Calendar;
 
-public class AlarmActivity extends Activity {
+public class AlarmActivity extends AppCompatActivity {
 
     AlarmManager alarmManager;
     private PendingIntent pendingIntent;
     private TimePicker alarmTimePicker;
     private static AlarmActivity inst;
     private TextView alarmTextView;
+
+    Constants.TransitionType type;
 
     public static AlarmActivity instance() {
         return inst;
@@ -35,6 +39,7 @@ public class AlarmActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
@@ -44,6 +49,9 @@ public class AlarmActivity extends Activity {
         alarmTextView = (TextView) findViewById(R.id.alarmText);
         ToggleButton alarmToggle = (ToggleButton) findViewById(R.id.alarmToggle);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        initPage();
+        initAnimation();
     }
 
     public void onToggleClicked(View view) {
@@ -71,4 +79,28 @@ public class AlarmActivity extends Activity {
     public void setAlarmText(String alarmText) {
         alarmTextView.setText(alarmText);
     }
+
+    private void initPage() {
+        type = (Constants.TransitionType) getIntent().getSerializableExtra(Constants.KEY_ANIM_TYPE);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finishAfterTransition();
+        return true;
+    }
+
+    private void initAnimation() {
+        switch (type){
+            case ExplodeJava:{
+                Explode enterTransition = new Explode();
+                enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+                getWindow().setEnterTransition(enterTransition);
+                break;
+            }
+        }
+    }
+
+
 }

@@ -20,20 +20,22 @@ android:background="@drawable/gradient_background">
         android:background="@color/fab1_color"
         android:layout_alignTop="@+id/alarmToggle"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="21dp">
+        android:layout_marginTop="22dp">
     </RelativeLayout>
 
-<ToggleButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Alarm On/Off"
-    android:background="@drawable/buuttonshare"
-    android:textColor="@color/bellaColor1"
-    android:id="@+id/alarmToggle"
-    android:layout_marginTop="25dp"
-    android:layout_centerHorizontal="true"
-    android:layout_below="@+id/alarmTimePicker"
-    android:onClick="onToggleClicked" />
+    <ToggleButton
+        android:id="@+id/alarmToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alarmTimePicker"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buuttonshare"
+        android:checked="true"
+        android:onClick="onToggleClicked"
+        android:text="Alarm On/Off"
+        android:textColor="@color/bellaColor1"
+        android:textOff="Off"
+        android:textOn="On" />
 
 <TextView
     android:layout_width="wrap_content"
