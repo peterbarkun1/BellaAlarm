@@ -33,14 +33,8 @@ public class Main2Activity extends AppCompatActivity {
         initAnimation();
 //__________________________________________________________________________________________________
 
+        //расчет биоритмов
 
-        //объявления переменных для графика и расчеты
-
-        double x,y,x1,y1,pi;
-        pi=3.14;
-
-
-//__________________________________________________________________________________________________
         Date ts = new Date();
         System.out.println(ts);//дата сегодня
         double millis_segodn = ts.getTime();
@@ -56,47 +50,89 @@ public class Main2Activity extends AppCompatActivity {
         tr.set(Calendar.MILLISECOND, 0);
         System.out.println(tr.getTimeInMillis());//обнуление
 
-        tr.set(1998, Calendar.AUGUST, 7, 12, 30, 0);//левая дата
+
+
+        //** ЗДЕСЬ НУЖНО ВСТАВИТЬ МОДУЛЬ ВВЕДЕНИЯ ДАТЫ ИЗ DIALOG
+
+
+
+        tr.set(1998, Calendar.AUGUST, 7);//левая дата
         System.out.println(tr.getTimeInMillis());
 
         double millis_rozhden = tr.getTimeInMillis();
-
         //Toast.makeText(this,(String.valueOf(millis1)), Toast.LENGTH_LONG).show();
         // во время открытия, выводит к-во миллисеекунд от 1970 до 1998 августа 7-го 12 30
-
         double raz = millis_segodn - millis_rozhden;
         //Toast.makeText(this,(String.valueOf(raz)), Toast.LENGTH_LONG).show();
         //во время открытия, выводит разницу миллисекунд сегодняшнего дня от 7 августа 98
-
         double perev = raz/86400000;
         //Toast.makeText(this,(String.valueOf(perev)), Toast.LENGTH_LONG).show();
         //переводит разницу из миллисекунд в дни
 
-        double[] razdney = new double[7];
+        double[] razdney = new double[10];
+        for(int i1 = 0; i1 < razdney.length; i1++) {
+            razdney[i1] = perev++;
+        }
         //создаем массив для отрисовки графика
-
 //__________________________________________________________________________________________________
 
+        //объявления переменных для графика и расчеты
+        double x,x1,x2,x3,y,y1,y2,y3;
 
         //отрисовка графиков
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
-        // первый график - биоритмы
 
-        x=0;
+        // первый график - биоритм физический
+
+        x = 0;
+
         series = new LineGraphSeries<DataPoint>();
             for (int i = 0; i<7; i++)
             {
                 x=x+1;
-                y=Math.sin(2*pi*x/23);
+                y=Math.sin(2*Math.PI*razdney[i]/23);
                 series.appendData(new DataPoint(x,y),true,7);
             }
         graph.addSeries(series);
-            series.setColor(Color.WHITE);
+            series.setColor(Color.BLACK);
             series.setDrawDataPoints(true);
-            series.setDrawBackground(true);
             series.setDataPointsRadius(10);
             series.setThickness(8);
+
+        // второй график - биоритм эмоциональный
+
+        x2 = 0;
+
+        series = new LineGraphSeries<DataPoint>();
+        for (int i = 0; i<7; i++)
+        {
+            x2=x2+1;
+            y2=Math.sin(2*Math.PI*razdney[i]/28);
+            series.appendData(new DataPoint(x2,y2),true,7);
+        }
+        graph.addSeries(series);
+        series.setColor(Color.GREEN);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(10);
+        series.setThickness(8);
+
+        // третий график - биоритм интеллектуальный
+
+        x3 = 0;
+
+        series = new LineGraphSeries<DataPoint>();
+        for (int i = 0; i<7; i++)
+        {
+            x3=x3+1;
+            y3=Math.sin(2*Math.PI*razdney[i]/33);
+            series.appendData(new DataPoint(x3,y3),true,7);
+        }
+        graph.addSeries(series);
+        series.setColor(Color.WHITE);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(10);
+        series.setThickness(8);
 
         //косинусоида
         x1=0;
