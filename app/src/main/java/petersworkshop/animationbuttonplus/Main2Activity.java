@@ -171,7 +171,7 @@ public class Main2Activity extends AppCompatActivity {
 
         //расположение
             graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.BOTTOM);
-            graph.getLegendRenderer().setFixedPosition(10,505);
+            //graph.getLegendRenderer().setFixedPosition(10,505);
 
         //цвет значений
             graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
