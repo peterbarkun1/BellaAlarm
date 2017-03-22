@@ -7,6 +7,7 @@ import android.transition.Explode;
 import android.view.Window;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -16,8 +17,13 @@ import java.util.TimeZone;
 
 public class Main2Activity extends AppCompatActivity {
 
+    LineGraphSeries<DataPoint>series1;
+    LineGraphSeries<DataPoint>series2;
+    LineGraphSeries<DataPoint>series3;
     LineGraphSeries<DataPoint>series;
     Constants.TransitionType type;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,57 +88,59 @@ public class Main2Activity extends AppCompatActivity {
         //отрисовка графиков
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
+        //легенда
+
 
         // первый график - биоритм физический
 
         x = 0;
 
-        series = new LineGraphSeries<DataPoint>();
+        series1 = new LineGraphSeries<DataPoint>();
             for (int i = 0; i<7; i++)
             {
                 x=x+1;
                 y=Math.sin(2*Math.PI*razdney[i]/23);
-                series.appendData(new DataPoint(x,y),true,7);
+                series1.appendData(new DataPoint(x,y),true,7);
             }
-        graph.addSeries(series);
-            series.setColor(Color.BLACK);
-            series.setDrawDataPoints(true);
-            series.setDataPointsRadius(10);
-            series.setThickness(8);
+        graph.addSeries(series1);
+            series1.setColor(Color.BLACK);
+            series1.setDrawDataPoints(true);
+            series1.setDataPointsRadius(10);
+            series1.setThickness(8);
 
         // второй график - биоритм эмоциональный
 
         x2 = 0;
 
-        series = new LineGraphSeries<DataPoint>();
+        series2 = new LineGraphSeries<DataPoint>();
         for (int i = 0; i<7; i++)
         {
             x2=x2+1;
             y2=Math.sin(2*Math.PI*razdney[i]/28);
-            series.appendData(new DataPoint(x2,y2),true,7);
+            series2.appendData(new DataPoint(x2,y2),true,7);
         }
-        graph.addSeries(series);
-        series.setColor(Color.GREEN);
-        series.setDrawDataPoints(true);
-        series.setDataPointsRadius(10);
-        series.setThickness(8);
+        graph.addSeries(series2);
+        series2.setColor(Color.GREEN);
+        series2.setDrawDataPoints(true);
+        series2.setDataPointsRadius(10);
+        series2.setThickness(8);
 
         // третий график - биоритм интеллектуальный
 
         x3 = 0;
 
-        series = new LineGraphSeries<DataPoint>();
+        series3 = new LineGraphSeries<DataPoint>();
         for (int i = 0; i<7; i++)
         {
             x3=x3+1;
             y3=Math.sin(2*Math.PI*razdney[i]/33);
-            series.appendData(new DataPoint(x3,y3),true,7);
+            series3.appendData(new DataPoint(x3,y3),true,7);
         }
-        graph.addSeries(series);
-        series.setColor(Color.WHITE);
-        series.setDrawDataPoints(true);
-        series.setDataPointsRadius(10);
-        series.setThickness(8);
+        graph.addSeries(series3);
+        series3.setColor(Color.WHITE);
+        series3.setDrawDataPoints(true);
+        series3.setDataPointsRadius(10);
+        series3.setThickness(8);
 
         //косинусоида
         x1=0;
@@ -149,6 +157,29 @@ public class Main2Activity extends AppCompatActivity {
             series.setDrawBackground(true);
             series.setDataPointsRadius(10);
             series.setThickness(8);
+
+        //легенда
+            series.setTitle("Your mood");
+            series1.setTitle("Sport");
+            series2.setTitle("Emotion");
+            series3.setTitle("Intell");
+
+        //настройки
+            graph.getLegendRenderer().setVisible(true);
+            graph.getLegendRenderer().resetStyles();
+            graph.getLegendRenderer().setTextColor(Color.WHITE);
+
+        //расположение
+            graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.BOTTOM);
+            graph.getLegendRenderer().setFixedPosition(10,505);
+
+        //цвет значений
+            graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.WHITE);
+            graph.getGridLabelRenderer().setVerticalLabelsColor(Color.WHITE);
+
+        //цвет осей
+            graph.getGridLabelRenderer().setHorizontalAxisTitleColor(Color.WHITE);
+            graph.getGridLabelRenderer().setVerticalAxisTitleColor(Color.WHITE);
     }
 
 
