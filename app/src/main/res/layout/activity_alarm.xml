@@ -3,49 +3,120 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".AlarmActivity"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+tools:context="petersworkshop.animationbuttonplus.AlarmActivity"
 android:background="@drawable/gradient_background">
 
-<TimePicker
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/alarmTimePicker"
-    android:backgroundTint="@color/bellaColor1"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true" />
-
-    <RelativeLayout
+    <TimePicker
+        android:id="@+id/alarmTimePicker"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/fab1_color"
-        android:layout_alignTop="@+id/alarmToggle"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp">
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:numbersTextColor="@color/bellaColor1"
+        android:amPmBackgroundColor="@color/colorAccent"
+        android:amPmTextColor="@color/bellaColor1"
+        android:backgroundTint="@color/bellaColor1"
+        android:timePickerMode="spinner"
+        android:layout_alignParentEnd="true" />
+
 
     <ToggleButton
         android:id="@+id/alarmToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/alarmTimePicker"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/buuttonshare"
         android:checked="true"
         android:onClick="onToggleClicked"
         android:text="Alarm On/Off"
         android:textColor="@color/bellaColor1"
         android:textOff="Off"
-        android:textOn="On" />
+        android:textOn="On"
+        android:layout_below="@+id/alarmTimePicker"
+        android:layout_centerHorizontal="true" />
 
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:text=""
+    android:textColor="@color/bellaColor1"
+    android:fontFamily="serif-monospace"
+    android:textSize="20dp"
+    android:textStyle="italic"
     android:id="@+id/alarmText"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
     android:layout_marginTop="20dp"
-    android:layout_below="@+id/alarmToggle" />
+    android:layout_below="@+id/alarmToggle"/>
 
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="35dp"
+        android:ellipsize="end"
+        android:text="Repeat 5 min later     "
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:textColorHint="@color/bellaColor"
+        android:textColor="@color/bellaColor1"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/relativeLayout3"
+        android:layout_centerHorizontal="true" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35dp"
+        android:text="Repeat Dayly              "
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:shadowColor="@color/bellaColor1"
+        android:textColor="@color/bellaColor1"
+        android:layout_marginTop="60dp"
+        android:layout_alignTop="@+id/alarmText"
+        android:layout_centerHorizontal="true" />
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="240dp"
+        android:background="@drawable/shape_for_option_2"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/relativeLayout4">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/fab1_color"
+        android:layout_marginTop="8dp"
+        android:id="@+id/relativeLayout3"
+        android:layout_below="@+id/switch1"
+        android:layout_alignParentStart="true">
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/fab1_color"
+        android:layout_marginTop="45dp"
+        android:layout_alignTop="@+id/alarmText"
+        android:layout_alignParentStart="true">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/fab1_color"
+        android:layout_marginTop="545dp"
+        android:layout_alignParentStart="true">
+    </RelativeLayout>
 </RelativeLayout>

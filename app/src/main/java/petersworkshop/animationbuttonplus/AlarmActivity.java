@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -50,8 +49,8 @@ public class AlarmActivity extends AppCompatActivity {
         ToggleButton alarmToggle = (ToggleButton) findViewById(R.id.alarmToggle);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
-        initPage();
-        initAnimation();
+       // initPage();
+        //initAnimation();
     }
 
     public void onToggleClicked(View view) {
@@ -80,11 +79,12 @@ public class AlarmActivity extends AppCompatActivity {
         alarmTextView.setText(alarmText);
     }
 
-    private void initPage() {
+  /**  private void initPage() {
         type = (Constants.TransitionType) getIntent().getSerializableExtra(Constants.KEY_ANIM_TYPE);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
+ }
+
     @Override
     public boolean onSupportNavigateUp(){
         finishAfterTransition();
@@ -101,6 +101,6 @@ public class AlarmActivity extends AppCompatActivity {
             }
         }
     }
-
+        */
 
 }

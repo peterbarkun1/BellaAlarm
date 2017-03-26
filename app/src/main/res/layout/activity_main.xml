@@ -40,18 +40,6 @@ Alarm"/>
     <android.support.design.widget.FloatingActionButton
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginLeft="85dp"
-        android:src="@drawable/ic_fb"
-        android:elevation="6dp"
-        android:id="@+id/fab_twi"
-        app:pressedTranslationZ="12dp"
-        app:backgroundTint="@color/fab2_color"
-        android:visibility="invisible"
-        />
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
         android:layout_marginLeft="170dp"
         android:src="@drawable/ic_graphic"
         android:elevation="6dp"
@@ -89,12 +77,12 @@ Alarm"/>
         android:onClick="onClick4"/>
 
     <TextView
-        android:text="Alpha 0.3.10"
+        android:text="Alpha 0.4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/bellaColor1"
         android:textSize="10dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="500dp"
         android:id="@+id/textView2"
         android:layout_gravity="bottom|center_horizontal"
@@ -113,5 +101,16 @@ Alarm"/>
         android:background="@color/fab1_color"
         android:layout_gravity="bottom|end">
     </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_twi"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="85dp"
+        android:elevation="6dp"
+        android:src="@drawable/ic_fb"
+        android:visibility="invisible"
+        app:backgroundTint="@color/fab2_color"
+        app:pressedTranslationZ="12dp" />
 
 </android.support.design.widget.CoordinatorLayout>

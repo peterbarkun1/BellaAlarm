@@ -1,6 +1,7 @@
 package petersworkshop.animationbuttonplus;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -28,14 +29,18 @@ public class AlarmService extends IntentService {
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, AlarmActivity.class), 0);
 
-        NotificationCompat.Builder alamNotificationBuilder = new NotificationCompat.Builder(
+        NotificationCompat.Builder alarmNotificationBuilder = new NotificationCompat.Builder(
                 this).setContentTitle("Bella Alarm").setSmallIcon(R.mipmap.ic_pw)
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg);
 
-        alamNotificationBuilder.setContentIntent(contentIntent);
-        alarmNotificationManager.notify(1, alamNotificationBuilder.build());
+        alarmNotificationBuilder.setContentIntent(contentIntent);
+        alarmNotificationManager.notify(1, alarmNotificationBuilder.build());
         Log.d("AlarmService", "Notification sent.");
+        //опытка вибрации
+        Notification notif = new Notification(R.drawable.ic_add_alarm_black_24dp, "Text in status bar",
+                System.currentTimeMillis());
+        notif.flags |= Notification.FLAG_AUTO_CANCEL;
 
     }
 }
