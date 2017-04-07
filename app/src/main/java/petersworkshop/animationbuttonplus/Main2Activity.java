@@ -147,7 +147,7 @@ public class Main2Activity extends AppCompatActivity {
         series = new LineGraphSeries<DataPoint>();
             for (int i = 0; i<7; i++)
             {
-                x1=x1+1;
+                x1=1;
                 y1=Math.cos(x1);
                 series.appendData(new DataPoint(x1,y1),true,7);
             }

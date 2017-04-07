@@ -1,14 +1,20 @@
 package petersworkshop.animationbuttonplus;
 
 import android.app.ActivityOptions;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +22,16 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab_inst,fab_twi,fab_vel, fab_inf;
     Animation FabOpen,FabClose,FabRotateClockwise,FabAntiRotateClockwise;
     boolean isOpen = false;
+    Dialog dialog;
+
+    //функции для фб
+  // private final List<String> fb_permissions = new ArrayList<>(Arrays.asList("public_profile"));
+    //private CallbackManager callbackManager; // facebook callback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
         //переход на скролл_активити
@@ -45,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         FabClose = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
         FabRotateClockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_clockwise);
         FabAntiRotateClockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_anticlockwise);
+
         //условия работы анимации
         fab_inst.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,15 +86,46 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
         //обработчики кнопок меню
 
+
         //переход к графику
-        public void onClick(View view) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
-            Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-            intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
-            startActivity(intent, options.toBundle());
+        public void onClickButtDial (View view) {
+            //создание диалога
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+            View mViev = getLayoutInflater().inflate(R.layout.dialog_layout,null);
+            final EditText mName = (EditText) mViev.findViewById(R.id.etName);
+            final EditText mBirthday = (EditText) mViev.findViewById(R.id.etBirthday);
+            Button input = (Button) mViev.findViewById(R.id.btnInput);
+
+            mBuilder.setView(mViev);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+
+            input.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(!mName.getText().toString().isEmpty()&& !mBirthday.getText().toString().isEmpty())
+                    {
+                        dialog.cancel();
+                        Toast.makeText(MainActivity.this, R.string.inputSuccessful,Toast.LENGTH_SHORT).show();
+
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
+                        Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+                        intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+                        startActivity(intent, options.toBundle());
+
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this, R.string.err_msg,Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
         }
 
         //переход к информации
@@ -99,7 +143,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this,AlarmActivity.class);
             intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
             startActivity(intent, options.toBundle());
+        }
 
-    }
+         //public void Login (View v) {
+         //      LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, fb_permissions);
+       // }
+
 }
 
