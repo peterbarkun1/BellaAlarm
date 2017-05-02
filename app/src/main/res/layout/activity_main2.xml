@@ -14,7 +14,7 @@
     tools:context="petersworkshop.graphbella.MainActivity">
 
     <TextView
-        android:text="This graph shows your morning mood throughout the week"
+        android:text="@string/this_graph_shows_your_biorhythm_during_the_week"
         android:textSize="20dp"
         android:layout_width="190dp"
         android:layout_height="75dp"

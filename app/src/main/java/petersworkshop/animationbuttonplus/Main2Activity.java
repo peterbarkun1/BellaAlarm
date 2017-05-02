@@ -5,14 +5,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class Main2Activity extends AppCompatActivity {
@@ -20,10 +27,11 @@ public class Main2Activity extends AppCompatActivity {
     LineGraphSeries<DataPoint>series1;
     LineGraphSeries<DataPoint>series2;
     LineGraphSeries<DataPoint>series3;
-    LineGraphSeries<DataPoint>series;
+   // LineGraphSeries<DataPoint>series;
     Constants.TransitionType type;
 
-
+    // определяем размер буфера при считывании с файла
+    private static final int READ_BLOCK_SIZE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,7 @@ public class Main2Activity extends AppCompatActivity {
 
         initPage();
         initAnimation();
+
 //__________________________________________________________________________________________________
 
         //расчет биоритмов
@@ -51,26 +60,62 @@ public class Main2Activity extends AppCompatActivity {
         TimeZone tz = TimeZone.getTimeZone("Europe/Moscow");
 
         Calendar tr = Calendar.getInstance(tz);
+
         tr.setLenient(false);
 
         tr.set(Calendar.MILLISECOND, 0);
         System.out.println(tr.getTimeInMillis());//обнуление
 
+        //чтение из файла значения даты
 
+        String s = "";//выводящая переменная
 
-        //** ЗДЕСЬ НУЖНО ВСТАВИТЬ МОДУЛЬ ВВЕДЕНИЯ ДАТЫ ИЗ DIALOG
+        try {
+            FileInputStream fileInputStream = openFileInput("Birthday.txt");
+            InputStreamReader reader = new InputStreamReader(fileInputStream);
 
+            char[] inputBuffer = new char[READ_BLOCK_SIZE];
+            int charRead;
 
+            // цикл читает данные из файла,
+            while ((charRead = reader.read(inputBuffer)) != -1) {
+                // конвертируем char в строку
+                String rString = String.copyValueOf(inputBuffer, 0, charRead);
+                s += rString;
+            }
+            reader.close();
+            // создаем всплывающее окно c результатом выволнения чтения из файла
+           // Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
 
-        tr.set(1998, Calendar.AUGUST, 7);//левая дата
-        System.out.println(tr.getTimeInMillis());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        double millis_rozhden = tr.getTimeInMillis();
-        //Toast.makeText(this,(String.valueOf(millis1)), Toast.LENGTH_LONG).show();
-        // во время открытия, выводит к-во миллисеекунд от 1970 до 1998 августа 7-го 12 30
+        //перевод тип date
+
+        Date birthD = new Date();
+            DateFormat format = new SimpleDateFormat("MMMM.dd.yyyy", Locale.ENGLISH);
+            try {
+                birthD = format.parse(s);
+            }  catch (ParseException e) {
+            e.printStackTrace();
+            }
+        //Toast.makeText(getBaseContext(),birthD.toString(),Toast.LENGTH_LONG).show();
+        //выводит дату введенную в диалоге
+
+        birthD.getTime(); // Узнаем количество миллисекунд Unix-time с того-самого-момента.
+       // Toast.makeText(this,(String.valueOf(birthD.getTime())), Toast.LENGTH_LONG).show();
+
+        //tr.set(1998, Calendar.AUGUST, 8);//левая дата для первых тестов с вложенными данными
+        //System.out.println(tr.getTimeInMillis());
+
+       // double millis_rozhden = tr.getTimeInMillis(); //рабочий
+        double millis_rozhden = birthD.getTime();   //проба
+        Toast.makeText(this,(String.valueOf(millis_rozhden)), Toast.LENGTH_LONG).show();//
+        // во время открытия, выводит к-во миллисеекунд от 1970 до установленной даты
         double raz = millis_segodn - millis_rozhden;
         //Toast.makeText(this,(String.valueOf(raz)), Toast.LENGTH_LONG).show();
-        //во время открытия, выводит разницу миллисекунд сегодняшнего дня от 7 августа 98
+        //во время открытия, выводит разницу миллисекунд сегодняшнего дня от установленной даты
         double perev = raz/86400000;
         //Toast.makeText(this,(String.valueOf(perev)), Toast.LENGTH_LONG).show();
         //переводит разницу из миллисекунд в дни
@@ -87,8 +132,6 @@ public class Main2Activity extends AppCompatActivity {
 
         //отрисовка графиков
         GraphView graph = (GraphView) findViewById(R.id.graph);
-
-        //легенда
 
 
         // первый график - биоритм физический
@@ -142,7 +185,7 @@ public class Main2Activity extends AppCompatActivity {
         series3.setDataPointsRadius(10);
         series3.setThickness(8);
 
-        //косинусоида
+        /** настроение пользователя ( в будующих обновлениях)
         x1=0;
         series = new LineGraphSeries<DataPoint>();
             for (int i = 0; i<7; i++)
@@ -157,9 +200,9 @@ public class Main2Activity extends AppCompatActivity {
             series.setDrawBackground(true);
             series.setDataPointsRadius(10);
             series.setThickness(8);
-
+*/
         //легенда
-            series.setTitle("Your mood");
+        //series.setTitle("Your mood");
             series1.setTitle("Sport");
             series2.setTitle("Emotion");
             series3.setTitle("Intell");
