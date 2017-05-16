@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
@@ -97,63 +98,58 @@ public class MainActivity extends AppCompatActivity {
 
         //переход к графику
         public void onClickButtDial (View view) {
-            //___________________________
+
+            if (new File("Birthday.txt").exists()) {
+                //если есть файл то диалог не создается - если нет, то создается
+                //создание диалога
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                View mViev = getLayoutInflater().inflate(R.layout.dialog_layout, null);
+                final EditText mBirthday = (EditText) mViev.findViewById(R.id.etBirthday);
+                Button input = (Button) mViev.findViewById(R.id.btnInput);
+
+                mBuilder.setView(mViev);
+                final AlertDialog dialog = mBuilder.create();
+                dialog.show();
+
+                input.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (!mBirthday.getText().toString().isEmpty()) {
+                            dialog.cancel();
+                            //Toast.makeText(MainActivity.this, R.string.inputSuccessful,Toast.LENGTH_SHORT).show();
+
+                            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
+                            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                            intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+                            startActivity(intent, options.toBundle());
+                        } else {
+                            Toast.makeText(MainActivity.this, R.string.err_msg, Toast.LENGTH_SHORT).show();
+                        }
+                        // создаем файл и записывем информацию
+                        try {
+                            FileOutputStream fileOutputStream = openFileOutput("Birthday.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
+                            outputWriter.write(mBirthday.getText().toString());
+                            outputWriter.close();
+
+                            // создаем всплывающее окно c результатом выволнения записи в файл
+                            // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
+                            // выводим полный путь расположения файла
+                            Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
 
 
-
-
-
-
-            //__________________________
-
-            //создание диалога
-            AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-            View mViev = getLayoutInflater().inflate(R.layout.dialog_layout,null);
-            final EditText mBirthday = (EditText) mViev.findViewById(R.id.etBirthday);
-            Button input = (Button) mViev.findViewById(R.id.btnInput);
-
-            mBuilder.setView(mViev);
-            final AlertDialog dialog = mBuilder.create();
-            dialog.show();
-
-            input.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(!mBirthday.getText().toString().isEmpty())
-                    {
-                        dialog.cancel();
-                    //Toast.makeText(MainActivity.this, R.string.inputSuccessful,Toast.LENGTH_SHORT).show();
-
-                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
-                        Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-                        intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
-                        startActivity(intent, options.toBundle());
-
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                    else
-                    {
-                        Toast.makeText(MainActivity.this, R.string.err_msg,Toast.LENGTH_SHORT).show();
-                    }
-                    // создаем файл и записывем информацию
-                    try {
-                        FileOutputStream fileOutputStream = openFileOutput("Birthday.txt", MODE_PRIVATE);
-                        OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
-                        outputWriter.write(mBirthday.getText().toString());
-                        outputWriter.close();
-
-                        // создаем всплывающее окно c результатом выволнения записи в файл
-                        // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
-                        // выводим полный путь расположения файла
-                        Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(),Toast.LENGTH_LONG).show();
-
-
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            });
+                });
+            }
+            else {
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+                startActivity(intent, options.toBundle());
+            }
         }
 
         //переход к информации
@@ -173,9 +169,51 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent, options.toBundle());
         }
 
-         //public void Login (View v) {
-         //      LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, fb_permissions);
-       // }
+
+        //редактирование даты рождения
+         public void redact (View v) {
+             AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+             View mViev = getLayoutInflater().inflate(R.layout.dialog_layout, null);
+             final EditText mBirthday = (EditText) mViev.findViewById(R.id.etBirthday);
+             Button input = (Button) mViev.findViewById(R.id.btnInput);
+
+             mBuilder.setView(mViev);
+             final AlertDialog dialog = mBuilder.create();
+             dialog.show();
+
+             input.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                     if (!mBirthday.getText().toString().isEmpty()) {
+                         dialog.cancel();
+                         //Toast.makeText(MainActivity.this, R.string.inputSuccessful,Toast.LENGTH_SHORT).show();
+
+                         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
+                         Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                         intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+                         startActivity(intent, options.toBundle());
+                     } else {
+                         Toast.makeText(MainActivity.this, R.string.err_msg, Toast.LENGTH_SHORT).show();
+                     }
+                     // создаем файл и записывем информацию
+                     try {
+                         FileOutputStream fileOutputStream = openFileOutput("Birthday.txt", MODE_PRIVATE);
+                         OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
+                         outputWriter.write(mBirthday.getText().toString());
+                         outputWriter.close();
+
+                         // создаем всплывающее окно c результатом выволнения записи в файл
+                         // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
+                         // выводим полный путь расположения файла
+                         Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
+
+
+                     } catch (Exception e) {
+                         e.printStackTrace();
+                     }
+                 }
+             });
+        }
 
 }
 

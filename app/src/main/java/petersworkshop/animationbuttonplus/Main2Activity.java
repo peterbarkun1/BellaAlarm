@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
@@ -104,14 +103,14 @@ public class Main2Activity extends AppCompatActivity {
         //выводит дату введенную в диалоге
 
         birthD.getTime(); // Узнаем количество миллисекунд Unix-time с того-самого-момента.
-       // Toast.makeText(this,(String.valueOf(birthD.getTime())), Toast.LENGTH_LONG).show();
+        // Toast.makeText(this,(String.valueOf(birthD.getTime())), Toast.LENGTH_LONG).show();
 
         //tr.set(1998, Calendar.AUGUST, 8);//левая дата для первых тестов с вложенными данными
         //System.out.println(tr.getTimeInMillis());
 
-       // double millis_rozhden = tr.getTimeInMillis(); //рабочий
+        // double millis_rozhden = tr.getTimeInMillis(); //рабочий
         double millis_rozhden = birthD.getTime();   //проба
-        Toast.makeText(this,(String.valueOf(millis_rozhden)), Toast.LENGTH_LONG).show();//
+        //Toast.makeText(this,(String.valueOf(millis_rozhden)), Toast.LENGTH_LONG).show();
         // во время открытия, выводит к-во миллисеекунд от 1970 до установленной даты
         double raz = millis_segodn - millis_rozhden;
         //Toast.makeText(this,(String.valueOf(raz)), Toast.LENGTH_LONG).show();

@@ -1,5 +1,6 @@
 package petersworkshop.animationbuttonplus;
 
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -23,8 +24,6 @@ public class AlarmActivity extends AppCompatActivity {
     private static AlarmActivity inst;
     private TextView alarmTextView;
 
-    Constants.TransitionType type;
-
     public static AlarmActivity instance() {
         return inst;
     }
@@ -43,19 +42,15 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-
         alarmTimePicker = (TimePicker) findViewById(R.id.alarmTimePicker);
         alarmTextView = (TextView) findViewById(R.id.alarmText);
         ToggleButton alarmToggle = (ToggleButton) findViewById(R.id.alarmToggle);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-       // initPage();
-        //initAnimation();
     }
+
 
     public void onToggleClicked(View view) {
 
-        Toast.makeText(AlarmActivity.this, "Alarm set!", Toast.LENGTH_SHORT).show();
 
         if (((ToggleButton) view).isChecked()) {
             Log.d("MyActivity", "Alarm On");
@@ -65,42 +60,17 @@ public class AlarmActivity extends AppCompatActivity {
             Intent myIntent = new Intent(AlarmActivity.this, AlarmReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, myIntent, 0);
             alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-            //попытка сделать повтор по дням
-            //long dayOfWeek = calendar.getFirstDayOfWeek();
-            //alarmManager.setInexactRepeating(alarmManager.RTC_WAKEUP,dayOfWeek,AlarmManager.INTERVAL_DAY,pendingIntent);
+            Toast.makeText(AlarmActivity.this, "Alarm set!", Toast.LENGTH_SHORT).show();
         } else {
             alarmManager.cancel(pendingIntent);
             setAlarmText("");
             Log.d("MyActivity", "Alarm Off");
+            Toast.makeText(AlarmActivity.this, "Alarm off!", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void setAlarmText(String alarmText) {
         alarmTextView.setText(alarmText);
     }
-
-  /**  private void initPage() {
-        type = (Constants.TransitionType) getIntent().getSerializableExtra(Constants.KEY_ANIM_TYPE);
-      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
- }
-
-    @Override
-    public boolean onSupportNavigateUp(){
-        finishAfterTransition();
-        return true;
-    }
-
-    private void initAnimation() {
-        switch (type){
-            case ExplodeJava:{
-                Explode enterTransition = new Explode();
-                enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
-                getWindow().setEnterTransition(enterTransition);
-                break;
-            }
-        }
-    }
-        */
 
 }
