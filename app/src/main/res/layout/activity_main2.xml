@@ -16,13 +16,13 @@
     <TextView
         android:text="@string/this_graph_shows_your_biorhythm_during_the_week"
         android:textSize="20dp"
-        android:layout_width="190dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:elevation="20dp"
         android:textColor="@color/bellaColor1"
         android:id="@+id/more"
         android:layout_marginTop="385dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginLeft="90dp"/>
 
     <Button
         android:text="Share your result with frends"

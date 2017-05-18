@@ -41,4 +41,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:id="@+id/textView4" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/fab1_color"
+        android:layout_alignParentBottom="true">
+    </RelativeLayout>
+
 </RelativeLayout>

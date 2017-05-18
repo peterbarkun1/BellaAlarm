@@ -23,9 +23,12 @@
         android:layout_marginTop="90dp"
         android:id="@+id/bellaAlarmText"
         android:transitionName="MyText"
-        android:layout_marginLeft="60dp"
-        android:text="Bella
-Alarm"/>
+        android:layout_marginLeft="45dp"
+        android:text="@string/bella_alarm"
+        android:shadowColor="#c8333333"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="60dp"
@@ -42,9 +45,9 @@ Alarm"/>
         android:layout_height="75dp"
         android:layout_marginLeft="170dp"
         android:src="@drawable/ic_graphic"
-        android:elevation="6dp"
+        android:elevation="20dp"
         android:id="@+id/fab_vel"
-        app:pressedTranslationZ="12dp"
+        app:pressedTranslationZ="20dp"
         app:backgroundTint="@color/fab1_color"
         android:visibility="invisible"
         android:clickable="true"

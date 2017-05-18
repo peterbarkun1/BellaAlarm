@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.Calendar;
@@ -51,7 +50,6 @@ public class AlarmActivity extends AppCompatActivity {
 
     public void onToggleClicked(View view) {
 
-
         if (((ToggleButton) view).isChecked()) {
             Log.d("MyActivity", "Alarm On");
             Calendar calendar = Calendar.getInstance();
@@ -60,15 +58,15 @@ public class AlarmActivity extends AppCompatActivity {
             Intent myIntent = new Intent(AlarmActivity.this, AlarmReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, myIntent, 0);
             alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-            Toast.makeText(AlarmActivity.this, "Alarm set!", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(AlarmActivity.this, "Alarm set!", Toast.LENGTH_SHORT).show();
         } else {
             alarmManager.cancel(pendingIntent);
             setAlarmText("");
             Log.d("MyActivity", "Alarm Off");
-            Toast.makeText(AlarmActivity.this, "Alarm off!", Toast.LENGTH_SHORT).show();
+
         }
     }
-
+    // Toast.makeText(AlarmActivity.this, "Alarm off!", Toast.LENGTH_SHORT).show();
     public void setAlarmText(String alarmText) {
         alarmTextView.setText(alarmText);
     }
