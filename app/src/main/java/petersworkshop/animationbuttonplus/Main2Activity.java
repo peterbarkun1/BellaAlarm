@@ -1,10 +1,15 @@
 package petersworkshop.animationbuttonplus;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
@@ -29,6 +34,11 @@ public class Main2Activity extends AppCompatActivity {
    // LineGraphSeries<DataPoint>series;
     Constants.TransitionType type;
 
+    @Override
+    public View findViewById(@IdRes int id) {
+        return super.findViewById(id);
+    }
+
     // определяем размер буфера при считывании с файла
     private static final int READ_BLOCK_SIZE = 100;
 
@@ -39,6 +49,8 @@ public class Main2Activity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        Button button1 = (Button) findViewById(R.id.button1);
 
         //обьявление функции анимации
 
@@ -252,5 +264,12 @@ public class Main2Activity extends AppCompatActivity {
     }
 //__________________________________________________________________________________________________
 
+    //переход к информации
+    public void userData(View view) {
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
+        Intent intent = new Intent(Main2Activity.this,UserActivity.class);
+        intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+        startActivity(intent, options.toBundle());
+    }
 }
 

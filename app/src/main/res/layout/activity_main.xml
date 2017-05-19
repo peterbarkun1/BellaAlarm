@@ -80,7 +80,7 @@
         android:onClick="onClick4"/>
 
     <TextView
-        android:text="Alpha 0.6.1"
+        android:text="Alpha 0.6.2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/bellaColor1"
@@ -117,5 +117,4 @@
         android:visibility="invisible"
         app:backgroundTint="@color/fab2_color"
         app:pressedTranslationZ="12dp" />
-
 </android.support.design.widget.CoordinatorLayout>

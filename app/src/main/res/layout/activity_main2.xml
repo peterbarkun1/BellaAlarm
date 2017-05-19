@@ -10,8 +10,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="10dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/gradient_background">
-    tools:context="petersworkshop.graphbella.MainActivity">
+    android:background="@drawable/gradient_background"
+    tools:context="petersworkshop.animationbuttonplus.Main2Activity">
 
     <TextView
         android:text="@string/this_graph_shows_your_biorhythm_during_the_week"
@@ -22,20 +22,31 @@
         android:textColor="@color/bellaColor1"
         android:id="@+id/more"
         android:layout_marginTop="385dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="90dp"/>
 
     <Button
-        android:text="Share your result with frends"
-        android:layout_width="match_parent"
+        android:text="@string/how_do_you_feel_today"
+        android:layout_centerHorizontal="true"
+        android:layout_width="190dp"
+        android:layout_marginBottom="15dp"
         android:layout_height="wrap_content"
         android:background="@drawable/buuttonshare"
         android:textColor="@color/bellaColor1"
-        android:id="@+id/button"
+        android:id="@+id/button1"
         android:clickable="true"
         android:elevation="24dp"
         android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:onClick="userData"
+        android:layout_alignParentBottom="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/fab1_color"
+        android:layout_marginTop="520dp"
+        android:layout_marginBottom="16dp">
+    </RelativeLayout>
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"

@@ -18,8 +18,10 @@
         android:textStyle="bold"
         android:textColor="@color/bellaColor1"
         android:textSize="70dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="30dp"/>
+        android:layout_marginLeft="30dp"
+        android:layout_above="@+id/iv1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp" />
 
     <ImageView
         android:id="@+id/iv1"
@@ -45,7 +47,7 @@
         android:textSize="40dp"
         android:textStyle="bold"
         android:fontFamily="cursive"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="115dp"
-        />
+        android:layout_marginBottom="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

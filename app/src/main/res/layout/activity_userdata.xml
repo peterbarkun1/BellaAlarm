@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:background="@drawable/gradient_background"
+    tools:context="petersworkshop.animationbuttonplus.UserActivity">
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:textColor="@color/bellaColor1"
-        android:background="@drawable/buuttonshare"
-        android:text="вывод данных из статистики" />
+    android:id="@+id/button2"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="16dp"
+    android:textColor="@color/bellaColor1"
+    android:background="@drawable/buuttonshare"
+    android:text="View statistics" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="250dp"
+        android:layout_marginBottom="300dp"
         android:textColor="@color/bellaColor1"
         android:background="@drawable/buuttonshare"
-        android:text="ввести в статистику" />
+        android:text="Input in statistics" />
 
     <EditText
         android:id="@+id/editText"
@@ -46,5 +52,13 @@
         android:layout_marginTop="68dp"
         android:textColor="@color/bellaColor1"
         android:textSize="20dp"
-        android:text="Как спалось? Как настроение?" />
+        android:text="how did you sleep?" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/fab1_color"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+    </RelativeLayout>
 </RelativeLayout>
