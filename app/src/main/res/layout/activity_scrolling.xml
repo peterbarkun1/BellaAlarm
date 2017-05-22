@@ -25,26 +25,14 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:elevation="50dp">
 
-            <TextView
-                android:id="@+id/bellaAlarmText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="cursive"
-                android:text="About it"
-                android:textColor="@color/fab_color"
-                android:textSize="50dp"
-                android:textStyle="bold"
-                android:transitionName="MyText" />
-
             <RelativeLayout
-                android:layout_width="160dp"
-                android:layout_height="2dp"
+                android:layout_width="265dp"
+                android:layout_height="5dp"
                 android:layout_marginBottom="80dp"
                 android:layout_marginRight="100dp"
                 android:background="@color/bellaColor1"
-                android:layout_gravity="bottom|end">
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="50dp">
             </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
@@ -53,6 +41,19 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <TextView
+                android:id="@+id/bellaAlarmText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:fontFamily="cursive"
+                android:text="Recommendations"
+                android:textColor="@color/fab_color"
+                android:textSize="42dp"
+                android:textStyle="bold"
+                android:transitionName="MyText" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>

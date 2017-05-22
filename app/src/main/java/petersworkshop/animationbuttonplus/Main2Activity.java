@@ -16,6 +16,7 @@ import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
@@ -31,7 +32,7 @@ public class Main2Activity extends AppCompatActivity {
     LineGraphSeries<DataPoint>series1;
     LineGraphSeries<DataPoint>series2;
     LineGraphSeries<DataPoint>series3;
-   // LineGraphSeries<DataPoint>series;
+    LineGraphSeries<DataPoint>series;
     Constants.TransitionType type;
 
     @Override
@@ -131,11 +132,59 @@ public class Main2Activity extends AppCompatActivity {
         //Toast.makeText(this,(String.valueOf(perev)), Toast.LENGTH_LONG).show();
         //переводит разницу из миллисекунд в дни
 
+        //создаем массив для отрисовки графика биоритмов
         double[] razdney = new double[10];
         for(int i1 = 0; i1 < razdney.length; i1++) {
             razdney[i1] = perev++;
         }
-        //создаем массив для отрисовки графика
+//_____________________________________________________________________________________
+        //чтение из файла значения настроения
+
+        String q = "";//выводящая глобальная переменная
+        Double vybor ;
+        double[] nastroy = new double[10]; // выводящий
+//_____________________________________________________________________________________
+        if (new File("Moods.txt").exists()) {
+
+            //переход на экран выбора настроения
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this);
+            Intent intent = new Intent(Main2Activity.this,UserActivity.class);
+            intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
+            startActivity(intent, options.toBundle());
+        }
+        else
+        {
+            try {
+                FileInputStream fileInputStream = openFileInput("Moods.txt");
+                InputStreamReader reader = new InputStreamReader(fileInputStream);
+
+                char[] inputBuffer = new char[READ_BLOCK_SIZE];
+                int charRead;
+
+                // цикл читает данные из файла,
+                while ((charRead = reader.read(inputBuffer)) != -1) {
+                    // конвертируем char в строку
+                    String rString = String.copyValueOf(inputBuffer, 0, charRead);
+                    q += rString;
+                }
+                reader.close();
+                // создаем всплывающее окно c результатом выволнения чтения из файла
+                //Toast.makeText(getBaseContext(),q, Toast.LENGTH_LONG).show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //перевод в double
+            vybor = Double.parseDouble(q);
+
+            //создаем массив для отрисовки графика настроения
+
+            for(int i1 = 0; i1 < nastroy.length; i1++) {
+                nastroy[i1] = vybor;
+            }
+        }
+
 //__________________________________________________________________________________________________
 
         //объявления переменных для графика и расчеты
@@ -196,27 +245,27 @@ public class Main2Activity extends AppCompatActivity {
         series3.setDataPointsRadius(10);
         series3.setThickness(8);
 
-        /** настроение пользователя ( в будующих обновлениях)
-        x1=0;
+        // настроение пользователя
+        x1 = 0;
         series = new LineGraphSeries<DataPoint>();
             for (int i = 0; i<7; i++)
             {
-                x1=1;
-                y1=Math.cos(x1);
+                x1=x1+1;
+                y1=nastroy[i];
                 series.appendData(new DataPoint(x1,y1),true,7);
             }
         graph.addSeries(series);
             series.setColor(Color.RED);
             series.setDrawDataPoints(true);
-            series.setDrawBackground(true);
+            //series.setDrawBackground(true);
             series.setDataPointsRadius(10);
             series.setThickness(8);
-*/
+
         //легенда
-        //series.setTitle("Your mood");
+            series.setTitle("Y mood");
             series1.setTitle("Sport");
             series2.setTitle("Emotion");
-            series3.setTitle("Intell");
+            series3.setTitle("Intel");
 
         //настройки
             graph.getLegendRenderer().setVisible(true);

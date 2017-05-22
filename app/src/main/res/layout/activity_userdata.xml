@@ -12,7 +12,7 @@
 
     <Button
     android:id="@+id/button2"
-    android:layout_width="180dp"
+    android:layout_width="190dp"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
@@ -21,44 +21,73 @@
     android:background="@drawable/buuttonshare"
     android:text="View statistics" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="300dp"
-        android:textColor="@color/bellaColor1"
-        android:background="@drawable/buuttonshare"
-        android:text="Input in statistics" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="149dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Input your mood" />
-
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="46dp"
         android:textColor="@color/bellaColor1"
-        android:textSize="20dp"
-        android:text="how did you sleep?" />
+        android:textSize="45dp"
+        android:text="How did you sleep?"
+        android:textStyle="bold"
+        android:fontFamily="cursive"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:background="@color/fab1_color"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout">
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/good"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/ic_mood_black_24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="140dp"
+        android:clickable="true"
+        android:onClick="good"/>
+
+    <Button
+        android:id="@+id/poker"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/ic_sentiment_neutral_black_24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="140dp"
+        android:clickable="true"
+        android:onClick="poker"/>
+
+    <Button
+        android:id="@+id/sad"
+        android:onClick="sad"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/ic_sentiment_dissatisfied_black_24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:clickable="true"
+        android:translationZ="12dp"
+        android:shadowDx="20"
+        android:shadowDy="20"
+        android:shadowRadius="30"
+        android:shadowColor="#000000"/>
+
+    <Button
+        android:id="@+id/tot"
+        android:onClick="tot"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/ic_sentiment_very_dissatisfied_black_24dp"
+        android:layout_marginLeft="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/sad"
+        android:layout_alignBottom="@+id/sad"
+        android:clickable="true"/>
 </RelativeLayout>

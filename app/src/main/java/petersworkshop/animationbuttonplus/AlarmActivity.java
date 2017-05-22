@@ -47,7 +47,6 @@ public class AlarmActivity extends AppCompatActivity {
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
     }
 
-
     public void onToggleClicked(View view) {
 
         if (((ToggleButton) view).isChecked()) {
