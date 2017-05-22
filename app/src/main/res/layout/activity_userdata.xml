@@ -19,7 +19,7 @@
     android:layout_marginBottom="16dp"
     android:textColor="@color/bellaColor1"
     android:background="@drawable/buuttonshare"
-    android:text="View statistics" />
+    android:text="Send Nudes" />
 
     <TextView
         android:id="@+id/textView6"
@@ -34,6 +34,19 @@
         android:textStyle="bold"
         android:fontFamily="cursive"/>
 
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bellaColor1"
+        android:textSize="20dp"
+        android:layout_marginTop="470dp"
+        android:gravity="center_horizontal"
+        android:text="@string/reload_app_for_look_new_value_into_graph"
+        android:layout_centerHorizontal="true">
+
+    </TextView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
@@ -41,6 +54,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/relativeLayout">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="120dp"
+        android:background="@color/fab1_color"
+        android:layout_alignParentStart="true">
     </RelativeLayout>
 
     <Button
@@ -71,7 +92,7 @@
         android:layout_height="160dp"
         android:background="@drawable/ic_sentiment_dissatisfied_black_24dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="130dp"
         android:clickable="true"
         android:translationZ="12dp"
         android:shadowDx="20"
