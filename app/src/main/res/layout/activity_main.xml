@@ -35,7 +35,7 @@
         android:layout_height="60dp"
         android:layout_marginLeft="260dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_menu"
+        android:src="@drawable/ic_more_vert_black_24dp"
         android:elevation="6dp"
         android:id="@+id/fab_inst">
     </android.support.design.widget.FloatingActionButton>
