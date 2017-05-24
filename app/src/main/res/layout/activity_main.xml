@@ -80,7 +80,7 @@
         android:onClick="onClick4"/>
 
     <TextView
-        android:text="Alpha 0.6.2.3"
+        android:text="Alpha 0.6.3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/bellaColor1"

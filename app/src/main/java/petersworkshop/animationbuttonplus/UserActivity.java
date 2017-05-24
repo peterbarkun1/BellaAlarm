@@ -127,5 +127,6 @@ public class UserActivity extends AppCompatActivity {
 
         Toast.makeText(this,"You are dead?",Toast.LENGTH_LONG).show();
     }
+    //______________________________________________________________________________________________
 
 }

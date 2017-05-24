@@ -77,7 +77,7 @@ android:background="@drawable/gradient_background">
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_marginTop="415dp"
+        android:layout_marginTop="425dp"
         android:layout_marginLeft="65dp"
         android:text="@string/don_t_keep_your_device_in_mode_no_sound"
         android:textSize="20dp"

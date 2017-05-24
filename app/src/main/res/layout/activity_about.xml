@@ -14,7 +14,8 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_height="420dp"
         app:srcCompat="@drawable/pw1"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
@@ -29,7 +30,19 @@
         android:id="@+id/textView3"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="80dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="send"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/bellaColor1"
+        android:background="@drawable/buuttonshare"
+        android:text="Send Nudes" />
 
     <TextView
         android:text="Bella Alarm for Android"
@@ -39,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/textView4" />
 
 
