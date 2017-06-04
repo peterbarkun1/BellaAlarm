@@ -42,7 +42,7 @@
         android:layout_marginBottom="16dp"
         android:textColor="@color/bellaColor1"
         android:background="@drawable/buuttonshare"
-        android:text="Send Nudes" />
+        android:text="Share app with friends" />
 
     <TextView
         android:text="Bella Alarm for Android"

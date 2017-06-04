@@ -171,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         //редактирование даты рождения
-         public void redact (View v) {
+
+         public void redact (View v)
+         {
              AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
              View mViev = getLayoutInflater().inflate(R.layout.dialog_layout, null);
              final EditText mBirthday = (EditText) mViev.findViewById(R.id.etBirthday);
@@ -181,10 +183,13 @@ public class MainActivity extends AppCompatActivity {
              final AlertDialog dialog = mBuilder.create();
              dialog.show();
 
-             input.setOnClickListener(new View.OnClickListener() {
+             input.setOnClickListener(new View.OnClickListener()
+             {
                  @Override
-                 public void onClick(View view) {
-                     if (!mBirthday.getText().toString().isEmpty()) {
+                 public void onClick(View view)
+                 {
+                     if (!mBirthday.getText().toString().isEmpty())
+                     {
                          dialog.cancel();
                          //Toast.makeText(MainActivity.this, R.string.inputSuccessful,Toast.LENGTH_SHORT).show();
 
@@ -192,27 +197,33 @@ public class MainActivity extends AppCompatActivity {
                          Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                          intent.putExtra(Constants.KEY_ANIM_TYPE, Constants.TransitionType.ExplodeJava);
                          startActivity(intent, options.toBundle());
-                     } else {
+                     }
+                     else
+                     {
                          Toast.makeText(MainActivity.this, R.string.err_msg, Toast.LENGTH_SHORT).show();
                      }
                      // создаем файл и записывем информацию
-                     try {
-                         FileOutputStream fileOutputStream = openFileOutput("Birthday.txt", MODE_PRIVATE);
-                         OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
-                         outputWriter.write(mBirthday.getText().toString());
-                         outputWriter.close();
 
-                         // создаем всплывающее окно c результатом выволнения записи в файл
-                         // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
-                         // выводим полный путь расположения файла
-                         Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
+                     try
+                     {
+                            FileOutputStream fileOutputStream = openFileOutput("Birthday.txt", MODE_PRIVATE);
+                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
+                            outputWriter.write(mBirthday.getText().toString());
+                            outputWriter.close();
 
+                            // создаем всплывающее окно c результатом выволнения записи в файл
+                            //  Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
+                            // выводим полный путь расположения файла
+                            //Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
 
-                     } catch (Exception e) {
-                         e.printStackTrace();
-                     }
+                         }
+                     catch (Exception e)
+                        {
+                             e.printStackTrace();
+                        }
                  }
              });
+
         }
 
 }

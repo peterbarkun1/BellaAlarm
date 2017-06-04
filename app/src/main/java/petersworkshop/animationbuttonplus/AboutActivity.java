@@ -2,6 +2,7 @@ package petersworkshop.animationbuttonplus;
 
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
@@ -46,17 +47,31 @@ public class AboutActivity extends AppCompatActivity {
         }
     }
 //__________________________________________________________________________________________________
-    //отправка на почту
-    public void send (View view) {
+    //отправка на почту c использованием AsyncTask
+    MyTask mt;
 
-        Intent email = new Intent(Intent.ACTION_SEND);
-        email.putExtra(Intent.EXTRA_SUBJECT, "Bella alarm");
-        email.putExtra(Intent.EXTRA_TEXT, "Bella makes every morning nice, I wake up rested and relaxed, try it yourself    https://play.google.com/store/apps/details?id=com.petersworksop.Bellaalarm.pro&hl=ru");
+    public void send (View view)
+    {
+        mt = new MyTask();//ссыль на класс
+        mt.execute();// исполнение
+}
+    //Работает)
 
-        //для того чтобы запросить email клиент устанавливаем тип
-        email.setType("message/rfc822");
+    class MyTask extends AsyncTask<Void, Void,Void>
+    {
+        @Override
+        protected Void doInBackground(Void... params)// метод для создания отдельного потока, не имеет доступ в UI поток (#этоважно)
+        {
+            Intent email = new Intent(Intent.ACTION_SEND);
+            email.putExtra(Intent.EXTRA_SUBJECT, "Bella alarm");
+            email.putExtra(Intent.EXTRA_TEXT, "Bella makes every morning nice, I wake up rested and relaxed, try it yourself    https://play.google.com/store/apps/details?id=com.petersworksop.Bellaalarm.pro&hl=ru");
 
-        startActivity(Intent.createChooser(email, "Choose email client :"));
+            //для того чтобы запросить email клиент устанавливаем тип
+            email.setType("message/rfc822");
 
+            startActivity(Intent.createChooser(email, "Choose email client :"));
+            return null;
+        }
     }
+
 }

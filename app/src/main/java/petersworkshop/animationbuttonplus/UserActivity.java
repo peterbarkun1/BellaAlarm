@@ -1,5 +1,6 @@
 package petersworkshop.animationbuttonplus;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
@@ -50,9 +51,14 @@ public class UserActivity extends AppCompatActivity {
         }
     }
     //______________________________________________________________________________________________
+    //объявление новых классов (потоков)
+    GoodTask gt;
+    PokerTask pt;
+    SadTask st;
+    TotTask tt;
 
     //запись в файл посредствам нажатий на кнопки
-    public void good (View view) {
+   /** public void good (View view) {
         try {
             double good = 0.5;
             FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
@@ -69,63 +75,118 @@ public class UserActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this,"Good mood? Ok)",Toast.LENGTH_LONG).show();
-    }
+    }*/
+//__________________________________________________________________________________________________
+     public void good (View view)
+     {
+         gt = new GoodTask();
+         gt.execute();
+         Toast.makeText(this,"Good mood? Ok)",Toast.LENGTH_LONG).show();
+     }
 
-    public void poker (View view) {
-        try {
-            double poker = 0;
-            FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
-            OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
-            outputWriter.write(String.valueOf(poker));
-            outputWriter.close();
+    class GoodTask extends AsyncTask<Void, Void,Void>
+    {
+        @Override
+        protected Void doInBackground(Void... params)
+        {
+            try {
+                double good = 0.5;
+                FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
+                outputWriter.write(String.valueOf(good));
+                outputWriter.close();
 
-            // создаем всплывающее окно c результатом выволнения записи в файл
-            // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
-            // выводим полный путь расположения файла
-            //Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
         }
-
+    }
+//__________________________________________________________________________________________________
+    public void poker (View view) {
+        pt = new PokerTask();
+        pt.execute();
         Toast.makeText(this,"Poker face? Ok",Toast.LENGTH_LONG).show();
     }
 
-    public void sad (View view) {
-        try {
-            double sad = -0.5;
-            FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
-            OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
-            outputWriter.write(String.valueOf(sad));
-            outputWriter.close();
-
-            // создаем всплывающее окно c результатом выволнения записи в файл
-            // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
-            // выводим полный путь расположения файла
-            //Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            e.printStackTrace();
+    class PokerTask extends AsyncTask<Void, Void,Void>
+    {
+        @Override
+        protected Void doInBackground(Void... params)
+        {
+            try
+            {
+                double poker = 0;
+                FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
+                outputWriter.write(String.valueOf(poker));
+                outputWriter.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return null;
         }
-
+    }
+//__________________________________________________________________________________________________
+    public void sad (View view)
+    {
+        st = new SadTask();
+        st.execute();
         Toast.makeText(this,"sad? Don't worry)",Toast.LENGTH_LONG).show();
     }
 
-    public void tot (View view) {
-        try {
-            double tot = -1;
-            FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
-            OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
-            outputWriter.write(String.valueOf(tot));
-            outputWriter.close();
-
-            // создаем всплывающее окно c результатом выволнения записи в файл
-            // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
-            // выводим полный путь расположения файла
-            //Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            e.printStackTrace();
+    class SadTask extends AsyncTask<Void, Void,Void>
+    {
+        @Override
+        protected Void doInBackground(Void... params)
+        {
+            try
+            {
+                double sad = -0.5;
+                FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
+                outputWriter.write(String.valueOf(sad));
+                outputWriter.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            return null;
         }
+    }
+//__________________________________________________________________________________________________
 
+    public void tot (View view)
+    {
+        tt = new TotTask();
+        tt.execute();
         Toast.makeText(this,"You are dead?",Toast.LENGTH_LONG).show();
+    }
+
+    class TotTask extends AsyncTask<Void, Void,Void>
+    {
+        @Override
+        protected Void doInBackground(Void... params)
+        {
+            try {
+                double tot = -1;
+                FileOutputStream fileOutputStream = openFileOutput("Moods.txt", MODE_PRIVATE);
+                OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutputStream);
+                outputWriter.write(String.valueOf(tot));
+                outputWriter.close();
+
+                // создаем всплывающее окно c результатом выволнения записи в файл
+                // Toast.makeText(getBaseContext(), mBirthday.getText(),Toast.LENGTH_LONG).show();
+                // выводим полный путь расположения файла
+                //Toast.makeText(getBaseContext(), getFilesDir().getAbsolutePath(), Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
     //______________________________________________________________________________________________
 

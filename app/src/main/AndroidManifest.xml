@@ -8,7 +8,7 @@
     <android-permission android:name=""/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_pw"
+        android:icon="@mipmap/ic_launcher"
         android:label="Bella alarm"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
