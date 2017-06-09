@@ -49,12 +49,11 @@ public class AboutActivity extends AppCompatActivity {
 //__________________________________________________________________________________________________
     //отправка на почту c использованием AsyncTask
     MyTask mt;
-
     public void send (View view)
     {
         mt = new MyTask();//ссыль на класс
         mt.execute();// исполнение
-}
+    }
     //Работает)
 
     class MyTask extends AsyncTask<Void, Void,Void>

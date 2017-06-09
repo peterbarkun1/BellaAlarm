@@ -28,14 +28,10 @@ public class MainActivity extends AppCompatActivity {
     boolean isOpen = false;
     Dialog dialog;
 
-    //функции для фб
-  // private final List<String> fb_permissions = new ArrayList<>(Arrays.asList("public_profile"));
-    //private CallbackManager callbackManager; // facebook callback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
         //переход на скролл_активити
